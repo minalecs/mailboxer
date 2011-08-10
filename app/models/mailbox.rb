@@ -9,7 +9,7 @@ class Mailbox
   #Returns the notifications for the messageable
   def notifications(options = {})
     #:type => nil is a hack not to give Messages as Notifications
-    return Notification.recipient(@messageable).where(:type => nil).order("notifications.created_at DESC") 
+    return Notification.recipient(@messageable).where(:type => nil).order("notifications.created_at DESC")
   end
 
   #Returns the conversations for the messageable
@@ -51,6 +51,14 @@ class Mailbox
   def inbox(options={})
     options = options.merge(:mailbox_type => 'inbox')
     return self.conversations(options)
+  end
+
+  def inbox(options={})
+    options = options.merge(:mailbox_type => 'inbox')
+  end
+
+  def new_inbox(options={})
+    options = options.merge(:mailbox_type => 'inbox', :unread=>true)
   end
 
   #Returns the conversations in the sentbox of messageable
@@ -115,3 +123,4 @@ class Mailbox
   end
 
 end
+
