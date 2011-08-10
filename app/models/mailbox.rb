@@ -53,14 +53,6 @@ class Mailbox
     return self.conversations(options)
   end
 
-  def inbox(options={})
-    options = options.merge(:mailbox_type => 'inbox')
-  end
-
-  def new_inbox(options={})
-    options = options.merge(:mailbox_type => 'inbox', :read=>true)
-  end
-
   #Returns the conversations in the sentbox of messageable
   #
   #Same as conversations({:mailbox_type => 'sentbox'})
