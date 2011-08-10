@@ -58,7 +58,7 @@ class Mailbox
   end
 
   def new_inbox(options={})
-    options = options.merge(:mailbox_type => 'inbox', :unread=>true)
+    options = options.merge(:mailbox_type => 'inbox', :read=>true)
   end
 
   #Returns the conversations in the sentbox of messageable
