@@ -38,8 +38,10 @@ class Mailbox
       end
     end
 
+
     if (options[:read].present? and options[:read]==false) or (options[:unread].present? and options[:unread]==true)
-    conv = conv.unread(@messageable)
+      Rails.logger.debug "inside read or unread option"
+      conv = conv.unread(@messageable)
     end
 
     return conv.uniq
@@ -52,6 +54,12 @@ class Mailbox
     options = options.merge(:mailbox_type => 'inbox')
     return self.conversations(options)
   end
+
+  def inboxunread(options={})
+    options = options.merge(:mailbox_type => 'inbox')
+    return self.conversations(options).unread(@messagable)
+  end
+
 
   #Returns the conversations in the sentbox of messageable
   #
